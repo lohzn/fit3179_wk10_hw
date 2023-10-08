@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data\\earthquake_counts.csv"
+  },
+  "vconcat": [
+    {
+      "title": "Earthquake Counts by Month (2016-2018)",
+      "width": 1093,
+      "height": 540,
+      "mark": {
+        "type": "bar",
+        "tooltip": true,
+        "cursor": "pointer",
+        "color": "#1f77b4",
+        "stroke": "black",
+        "strokeWidth": 1,
+        "strokeOpacity": 0.5,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "ordinal",
+          "sort": [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ],
+          "title": "Month"
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "axis": { "title": "Number of Earthquakes" }
+        },
+        "tooltip": [
+          { "field": "date", "type": "ordinal" },
+          { "field": "count", "type": "quantitative" }
+        ],
+        "opacity": {
+          "condition": {
+            "selection": "filter",
+            "value": 1
+          },
+          "value": 0.3
+        }
+      },
+      "selection": {
+        "filter": {
+          "type": "single",
+          "fields": ["date"],
+          "bind": {
+            "input": "select",
+            "options": [
+              null,
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December"
+            ],
+            "name": "Filter by Month"
+          },
+          "clear": false
+        }
+      }
+    }
+  ]
+}
