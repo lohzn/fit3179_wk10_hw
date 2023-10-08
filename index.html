@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Symbol Map</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+  </head>
+  <body>
+    <h1>Week 10 Homework Visualisation</h1>
+    <div id="symbol_map"></div>
+    <!-- A brief para that the below is a bar chart to show the freq of earthquakes in each month through 2016-2018 -->
+    <h2>Bar Chart on Japan's Earthquake frequency</h2>
+    <p>We can see that Japan has the most earthquakes in the world. This bar chart shows the frequency of earthquakes in each month through 2016-2018.</p>
+    <div id="bar_chart"></div>
+
+    <script type="text/javascript">
+      var spec = "https://raw.githubusercontent.com/lohzn/fit3179_wk9_hw/main/js/japan_symbolmap.vg.json";
+      vegaEmbed("#symbol_map", spec)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+        var specVis1 = "js\\japan_barchart.vg.json";
+        vegaEmbed('#bar_chart', specVis1).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
+  </body>
+</html>
